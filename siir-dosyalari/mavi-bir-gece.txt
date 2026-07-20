@@ -190,6 +190,25 @@
         });
     </script>
 
+    <!-- KÜRESEL CANLI YORUM SİSTEMİ (CUSDIS) -->
+    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
+        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a1a; font-family: 'Georgia', serif;">Ziyaretçi Yorumları</h3>
+        
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="371ccd11-50e8-4a06-ab08-0177eef0d2b4"
+          data-page-id="mavi-bir-gece-siiri"
+          data-page-url=""
+          data-page-title="Mavi Bir Gece Şiiri">
+        </div>
+        
+        <!-- İnternet URL'sini otomatik dolduran akıllı kod -->
+        <script>
+            document.getElementById('cusdis_thread').setAttribute('data-page-url', window.location.href);
+        </script>
+        <script async defer src="https://cusdis.com"></script>
+    </div>
+
     <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
 </body>
 </html>
