@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanatın Hayatımdaki Yeri | Biraz Muhabbet</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.6; }
+        header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; }
+        nav { margin-top: 15px; }
+        nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; }
+        .container { max-width: 750px; margin: 60px auto; padding: 0 20px; }
+        .full-article-title { font-family: 'Georgia', serif; font-size: 32px; font-weight: bold; color: #1a1a1a; margin-bottom: 5px; }
+        .full-article-date { font-size: 13px; color: #777; display: block; margin-bottom: 30px; font-style: italic; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
+        .full-article-body { font-size: 17px; color: #222; text-align: justify; margin-bottom: 50px; }
+        .back-button { display: inline-block; padding: 10px 25px; background: #1a1a1a; color: #d4af37; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid #d4af37; border-radius: 4px; transition: 0.3s; }
+        .back-button:hover { background: #d4af37; color: #1a1a1a; }
+        footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; margin-top: 100px; font-size: 13px; border-top: 2px solid #d4af37; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hamza Pak (Hâimî)</h1>
+        <nav>
+            <a href="../index.html">Ana Sayfa</a>
+            <a href="../sozsel-sanatlar.html">Sözsel Sanatlar</a>
+            <a href="../gorsel-sanatlar.html">Görsel Sanatlar</a>
+            <a href="../biraz-muhabbet.html">Biraz Muhabbet</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="full-article-title">Sanatın Hayatımdaki Yeri</h2>
+        <span class="full-article-date">Yayınlanma Tarihi: 19 Temmuz 2026</span>
+        
+        <div class="full-article-body">
+            <p>Bu benim sitemdeki ilk blog yazım. Burada dünyayı nasıl gördüğümü, kelimelerin ve renklerin hayatımı nasıl şekillendirdiğini paylaşacağım. Sanat, ruhun dışa vurumudur ve sınır tanımaz. İnsan bazen kelimelerle anlatamadığını bir fırça darbesiyle, bazen de bir tuvale sığdıramadığını küçük bir dizeyle anlatır.</p>
+            <br>
+            <p>Yıllar boyunca biriktirdiğim tüm bu duyguları tek bir çatı altında toplamak uzun zamandır hayalimdi. Bu dijital köşe, sadece bir web sitesi değil; aynı zamanda benim sessiz sığınağım. Buraya bıraktığım her kelime ve her renk tonu, zamana meydan okuma çabamın bir ürünüdür. Eşlik ettiğiniz ve bu muhabbete ortak olduğunuz için çok teşekkür ederim.</p>
+        </div>
+        <a href="../biraz-muhabbet.html" class="back-button">← Biraz Muhabbete Geri Dön</a>
+    </div>
+    <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
+</body>
+</html>

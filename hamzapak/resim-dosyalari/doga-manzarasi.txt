@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doğa Manzarası Çalışmam | Görsel Sanatlar</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.6; }
+        header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; }
+        nav { margin-top: 15px; }
+        nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; }
+        .container { max-width: 800px; margin: 50px auto; padding: 0 20px; text-align: center; }
+        .artwork-title { font-family: 'Georgia', serif; font-size: 28px; font-weight: bold; color: #1a1a1a; margin-bottom: 25px; }
+        .full-image { width: 100%; max-height: 500px; object-fit: contain; border: 3px solid #d4af37; border-radius: 2px; margin-bottom: 25px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .artwork-description { max-width: 650px; margin: 0 auto 40px auto; color: #333; font-size: 16px; text-align: justify; }
+        .back-button { display: inline-block; padding: 10px 25px; background: #1a1a1a; color: #d4af37; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid #d4af37; border-radius: 4px; transition: 0.3s; }
+        .back-button:hover { background: #d4af37; color: #1a1a1a; }
+        footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; margin-top: 80px; font-size: 13px; border-top: 2px solid #d4af37; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hamza Pak (Hâimî)</h1>
+        <nav>
+            <a href="../index.html">Ana Sayfa</a>
+            <a href="../sozsel-sanatlar.html">Sözsel Sanatlar</a>
+            <a href="../gorsel-sanatlar.html">Görsel Sanatlar</a>
+            <a href="../biraz-muhabbet.html">Biraz Muhabbet</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2 class="artwork-title">Doğa Manzarası Çalışmam</h2>
+        <img src="https://picsum.photos" alt="Doğa Manzarası Büyük" class="full-image">
+        <div class="artwork-description">
+            <strong>Teknik:</strong> Tuval Üzerine Yağlı Boya <br>
+            <strong>Boyut:</strong> 50x70 cm <br>
+            <strong>Yıl:</strong> 2026 <br><br>
+            Bu çalışmamda doğanın dinginliğini ve renklerin birbiriyle olan zamansız uyumunu yakalamaya çalıştım. Tuvalin üzerindeki her fırça darbesi, iç dünyamdaki huzurun bir yansımasıdır. Işığın ağaçlar arasından süzülüşü, hayattaki umut kırıntılarını simgeler.
+        </div>
+        <a href="../gorsel-sanatlar.html" class="back-button">← Görsel Sanatlara Geri Dön</a>
+    </div>
+    <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
+</body>
+</html>
