@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamza Pak (Hâimî) | Ana Sayfa</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.6; }
+        header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; }
+        nav { margin-top: 15px; }
+        nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; transition: 0.3s; font-size: 14px; letter-spacing: 1px; }
+        nav a:hover, nav a.active { color: #1a1a1a; background: #d4af37; }
+        
+        /* Üst Geniş Kapak Resmi */
+        .main-hero-image { width: 100%; height: 400px; background-image: linear-gradient(rgba(26, 26, 26, 0.6), rgba(26, 26, 26, 0.6)), url('gorsel-dosyalari/photo/banner.webp'); background-size: cover; background-position: center; border-bottom: 2px solid #d4af37; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: #f4f1ea; padding: 0 20px; }
+        .main-hero-image h2 { font-size: 36px; color: #d4af37; margin-bottom: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; }
+        .main-hero-image p { font-size: 18px; color: #f4f1ea; max-width: 700px; font-style: italic; letter-spacing: 1px; }
+        
+        /* Ana Bölüm Üst İki Sütunlu Alan */
+        .main-content { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1100px; margin: 50px auto 10px auto; padding: 0 20px; }
+        .quick-links { display: flex; flex-direction: column; gap: 35px; }
+        .content-section { background: transparent; padding-left: 20px; border-left: 3px solid #d4af37; }
+        .content-section h3 { margin-bottom: 8px; color: #1a1a1a; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .content-section p { color: #555; font-size: 15px; margin-bottom: 12px; }
+        .content-section a { display: inline-block; padding: 6px 0; color: #1a1a1a; text-decoration: none; font-size: 13px; font-weight: 600; border-bottom: 2px solid #d4af37; transition: 0.3s; }
+        .content-section a:hover { color: #d4af37; border-bottom-color: #1a1a1a; }
+        .right-side-panel { background: transparent; display: flex; flex-direction: column; }
+        .right-side-panel img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 2px; border: 1px solid #d4af37; margin-bottom: 20px; }
+        .right-side-panel h3 { color: #1a1a1a; margin-bottom: 12px; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; }
+        .right-side-panel p { color: #555; font-size: 15px; line-height: 1.7; }
+
+        /* 3 SÜTUNLU YENİ DENGELİ VE SİMETRİK SEÇKİ ALANI */
+        .showcase-container { 
+            max-width: 1100px; 
+            margin: 60px auto 60px auto; 
+            padding: 0 20px; 
+        }
+        
+        /* 1. İstek: Sütunların aralarını açan ve eşitleyen yeni ızgara yapısı */
+        .showcase-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr 1fr; /* 3 Eşit genişlikte sütun */
+            gap: 60px; /* Sütunların araları belirgin şekilde açıldı */
+            text-align: center; 
+        }
+        
+        /* Her bir sütunun kendi dikey hizalaması */
+        .showcase-column { 
+            background: transparent; 
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .showcase-column h3 { 
+            font-size: 16px; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: #d4af37; 
+            margin-bottom: 5px; 
+        }
+        
+        .showcase-column h4 { 
+            font-size: 19px; 
+            color: #1a1a1a; 
+            margin-bottom: 15px; 
+            font-family: 'Georgia', serif; 
+        }
+        
+        .showcase-column p { 
+            font-size: 14px; 
+            color: #555; 
+            font-style: italic; 
+            line-height: 1.6; 
+        }
+
+        /* 1. İstek: Ortadaki sütuna tam oturan, küçültülmüş yeni fotoğraf yuvası */
+        .showcase-image-middle { 
+            width: 100%; /* Üstündeki sütunun genişliğine tam eşitlenir */
+            height: 220px; /* Sütun dengesini bozmayacak zarif bir yükseklik */
+            border: 2px solid #d4af37; 
+            border-radius: 2px; 
+            overflow: hidden; 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04); 
+            margin-top: 5px;
+        }
+        
+        .showcase-image-middle img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            transition: transform 0.4s; 
+        }
+        
+        .showcase-image-middle img:hover { 
+            transform: scale(1.03); 
+        }
+
+
+        /* Sarı Tabanlı İletişim / Bilgi Alanı */
+        .info-bar { background-color: #d4af37; color: #1a1a1a; padding: 30px 20px; border-top: 1px solid #b89322; }
+        .info-bar-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: center; }
+        .info-left { display: flex; flex-direction: column; gap: 5px; }
+        .info-left h4 { font-size: 22px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; }
+        .instagram-btn { display: inline-flex; align-items: center; align-self: flex-start; background: #1a1a1a; color: #d4af37; text-decoration: none; padding: 8px 16px; border-radius: 4px; font-weight: 600; font-size: 14px; transition: 0.3s; margin-top: 5px; }
+        .instagram-btn:hover { background: #333; color: #fff; }
+        .info-right { display: flex; justify-content: flex-end; }
+        .commission-box { background: #1a1a1a; color: #f4f1ea; padding: 15px 30px; border-radius: 4px; font-size: 18px; font-weight: 600; letter-spacing: 1px; border: 1px solid #b89322; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .status-closed { color: #e74c3c; margin-left: 5px; text-transform: uppercase; }
+
+        /* Son Eklenenler İçin Doğrudan Geçiş Linkleri */
+        .showcase-link { 
+            display: inline-block; 
+            margin-top: 15px; 
+            color: #1a1a1a; 
+            text-decoration: none; 
+            font-size: 13px; 
+            font-weight: 600; 
+            border-bottom: 2px solid #d4af37; 
+            transition: 0.3s; 
+        }
+        .showcase-link:hover { 
+            color: #d4af37; 
+            border-bottom-color: #1a1a1a; 
+        }        
+
+	footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; font-size: 13px; }
+        @media (max-width: 768px) { 
+            .main-content, .info-bar-container, .showcase-grid { grid-template-columns: 1fr; text-align: center; } 
+            .info-right { justify-content: center; }
+            .info-left .instagram-btn { align-self: center; }
+            header h1 { font-size: 42px; } .main-hero-image { height: 300px; } 
+            .showcase-image-center { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hamza Pak (Hâimî)</h1>
+        <nav>
+            <a href="index.html" class="active">Ana Sayfa</a>
+            <a href="sozsel-sanatlar.html">Sözsel Sanatlar</a>
+            <a href="gorsel-sanatlar.html">Görsel Sanatlar</a>
+            <a href="biraz-muhabbet.html">Biraz Muhabbet</a>
+        </nav>
+    </header>
+
+    <div class="main-hero-image">
+        <h2>Fikrim olsa ben kimim,<br>Sorar mıyım bu kadar ben kimim?</h2>
+    </div>
+
+    <div class="main-content">
+        <!-- SOL SÜTUN -->
+        <div class="quick-links">
+            <div class="content-section">
+                <h3>Sözsel Sanatlar</h3>
+                <p>"Şiir insandan yükselen ve Kur'an ile haddi bildirilen sanatların şâhıdır."<br>Burasıda benim bu mefhumda ki yolculuğumdur.</p>
+                <a href="sozsel-sanatlar.html">Şiirsel Çalışmaları Oku →</a>
+            </div>
+            <div class="content-section">
+                <h3>Görsel Sanatlar</h3>
+                <p>Bir şey anlatmak istiyorum, ama ne?<br>İşte o "ne"yi arama yolculuğumdur burası.</p>
+                <a href="gorsel-sanatlar.html">Eserleri Gör →</a>
+            </div>
+            <div class="content-section">
+                <h3>Biraz Muhabbet</h3>
+                <p>İnsan ağzını kapalı tuttuğu sürece dilinin hâkimidir.<br> Ama bazen haddi aşıp konuşuyoruz işte...</p>
+                <a href="biraz-muhabbet.html">Yazıları Oku →</a>
+            </div>
+        </div>
+
+        <!-- SAĞ SÜTUN -->
+        <div class="right-side-panel">
+            <img src="gorsel-dosyalari/photo/karakter.webp" alt="Kimim Ben?">
+            <h3>“Meçhûl olsa da ne kadar bildiğim,<br>Tek bildiğimdir yaşamayı bildiğim.“</h3>
+            <p>Bazen fırçayla, bazen kalemle bir şeyler karalayarak zihnimi ve gönlümü keşfetmeye çalışmanın hikâyesidir bu.</p>
+        </div>
+    </div>
+
+    <!-- 3 SÜTUNLU SEÇKİ VE DOĞRUDAN ULAŞIM BUTONLARI -->
+    <div class="showcase-container">
+        <div class="showcase-grid">
+            
+            <!-- Sol Sütun: Son Şiir Tanıtımı -->
+            <div class="showcase-column">
+                <h3>Son Şiir</h3>
+                <h4>Tek Bir Râ</h4>
+                <p>"Çeşm-i hâren ile sardın berîden mürekkebim. Kılma çeşm-i bîgâr hem kılınsan karar edemez kalbim..."</p>
+                <!-- Doğrudan Şiir Detayına Giden Link -->
+                <a href="siir-dosyalari/mavi-bir-gece.html" class="showcase-link">Devamını Oku...</a>
+            </div>
+            
+            <!-- Orta Sütun: Son Resim ve Fotoğraf Yuvası -->
+            <div class="showcase-column">
+                <h3>Son Resim</h3>
+                <h4>Doğa Manzarası</h4>
+                
+                <div class="showcase-image-middle">
+                    <img src="https://picsum.photos" alt="Son Eklenen Resim">
+                </div>
+                <!-- Doğrudan Resim Detayına Giden Link -->
+                <a href="resim-dosyalari/doga-manzarasi.html" class="showcase-link">Esere Git...</a>
+            </div>
+            
+            <!-- Sağ Sütun: Son Yazı Tanıtımı -->
+            <div class="showcase-column">
+                <h3>Son Muhabbet</h3>
+                <h4>Sanatın Yeri</h4>
+                <p>"Kelimelerin ve renklerin hayatımı nasıl şekillendirdiğine dair felsefi bir iç döküş. İlk blog yazısı heyecanıyla..."</p>
+                <!-- Doğrudan Yazı Detayına Giden Link -->
+                <a href="yazi-dosyalari/sanatin-yeri.html" class="showcase-link">Devamını Oku...</a>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!-- SARI TABANLI İLETİŞİM VE KOMİSYON BÖLÜMÜ -->
+    <div class="info-bar">
+        <div class="info-bar-container">
+            <!-- Sol: İletişim, Instagram ve E-Posta Butonları -->
+            <div class="info-left">
+                <h4>İletişim</h4>
+                <p>Herhangi bir konuda iletişime geçmek için;</p>
+                
+                <!-- Butonları yan yana düzgünce dizen alan -->
+                <div style="display: flex; gap: 15px; margin-top: 10px; flex-wrap: wrap; align-items: center;">
+                    
+                    <!-- Instagram Butonu -->
+                    <a href="https://www.instagram.com/h4mza_pak/" target="_blank" class="instagram-btn" style="margin-top: 0;">
+                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; display: inline-block; vertical-align: middle;">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                        <span>@h4mza_pak</span>
+                    </a>
+
+                    <!-- Buton Grubu (Tıklanabilir buton ve Açık adres kutusunu birleştiren alan) -->
+                    <div style="display: inline-flex; border-radius: 4px; overflow: hidden; border: 1px solid #d4af37;">
+                        
+                        <!-- Sol Taraf: Tıklanabilir E-Posta Butonu -->
+                        <a href="mailto:h4mza.pak@gmail.com" class="instagram-btn" style="margin-top: 0; border: none; border-radius: 0; background: #1a1a1a; padding-right: 12px;">
+                            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; display: inline-block; vertical-align: middle;">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span>E-Posta Gönder</span>
+                        </a>
+                        
+                        <!-- Sağ Taraf: İstediğiniz Buton İşlevi Olmayan Açık Adres Alanı -->
+                        <div style="background: #2a2a2a; color: #f4f1ea; font-size: 13px; font-weight: 600; padding: 0 16px; display: flex; align-items: center; letter-spacing: 0.5px; border-left: 1px solid #3d3d3d; cursor: default; user-select: all;">
+                            <span>h4mza.pak@gmail.com</span>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+            
+            <!-- Sağ: Komisyon Kutusu -->
+            <div class="info-right">
+                <div class="commission-box">
+                    Komisyon: <span class="status-closed">Kapalı</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
+</body>
+</html>
