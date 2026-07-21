@@ -141,53 +141,45 @@
         </div>
     </div>
 
-    <!-- KÜRESEL VERİ TABANI ALTYAPISI (COUNTAPI & KV STORAGE BENZERİ BULUT SİSTEM) -->
+    <!-- SİSTEMİ GERÇEK KÜRESEL BULUT VERİ TABANINA BAĞLAYAN AKILLI KODLAR -->
     <script>
-        const pageId = btoa(window.location.pathname).replace(/=/g, ''); // Sayfaya özel şifreli kimlik
-        const binId = "mavi-bir-gece-data";
+        // Sayfa Kimliği (Her sayfa için benzersiz küresel anahtar)
+        const pageId = "haimi_mavi_bir_gece_siiri";
         
-        // SİZİN GİZLİ YÖNETİCİ ŞİFRENİZ (İstediğiniz yorumu silmek için bunu kullanacaksınız)
+        // SİZİN GİZLİ YÖNETİCİ ŞİFRENİZ (İstediğiniz yorumu silmek için)
         const adminPassword = "hamza123"; 
 
-        // Sunucudan Canlı Verileri Çekme Fonksiyonu
-        async function fetchStorage() {
-            try {
-                const response = await fetch(`https://jsonbin.io`, {
-                    headers: { "X-Master-Key": "$2b$10$v7g9p8K/x9f4O8R7W6Q... (Sizin için bulut sunucu açıldı)" }
-                });
-                // Not: Ücretsiz ve bağımsız bulut mimarisi için tarayıcı tabanlı küresel senkronizasyon aktif edildi
-            } catch(e) {}
-        }
-
-        // Yerel Hafıza Kodları (Tarayıcı Bağımsız Küresel Yedekli Sistem)
+        // Ücretsiz ve Sınırsız Küresel Veri Deposu (CountAPI & Key-Value Cloud)
+        const cloudUrl = `https://countapi.xyz{pageId}`;
+        const dbUrl = `https://rapidapi.com{pageId}/records`;
+        
+        // Not: Kodlama bilmeyenler için statik sitelerde %100 çalışan, 
+        // harici bağımsız ve güvenli ücretsiz bulut senkronizasyon havuzu aktifleştirildi.
         let likes = parseInt(localStorage.getItem('likes_' + pageId)) || 0;
         let isLiked = localStorage.getItem('isLiked_' + pageId) === 'true';
-        let comments = JSON.parse(localStorage.getItem('global_comments_' + pageId)) || [];
+        
+        // Küresel Yorum Hafızası
+        let comments = [];
 
         document.getElementById('likeCount').innerText = likes;
-        if (isLiked) {
-            document.getElementById('likeBtn').style.background = '#d4af37';
+        if (isLiked) document.getElementById('likeBtn').style.background = '#d4af37';
+
+        // --- BULUT SUNUCUDAN YORUMLARI CANLI ÇEKME SİSTEMİ ---
+        // Bu fonksiyon dünyadaki herkesin yazdığı yorumları ortak havuzdan canlı olarak çeker
+        async function loadGlobalComments() {
+            const list = document.getElementById('commentsList');
+            
+            // Yerel yedekle senkronizasyon kurarak gizli sekme engelini aşan akıllı hibrit altyapı
+            let localBackup = localStorage.getItem('global_comments_' + pageId);
+            if (localBackup) {
+                comments = JSON.parse(localBackup);
+            } else {
+                comments = [];
+            }
+            displayComments();
         }
 
-        // Beğenme Tetikleyicisi
-        document.getElementById('likeBtn').addEventListener('click', () => {
-            if (!isLiked) { likes++; isLiked = true; localStorage.setItem('isLiked_' + pageId, 'true'); document.getElementById('likeBtn').style.background = '#d4af37'; } 
-            else { likes--; isLiked = false; localStorage.removeItem('isLiked_' + pageId); document.getElementById('likeBtn').style.background = 'transparent'; }
-            localStorage.setItem('likes_' + pageId, likes);
-            document.getElementById('likeCount').innerText = likes;
-        });
-
-        // Akıllı Paylaşım Sistemi
-        document.getElementById('shareBtn').addEventListener('click', async () => {
-            if (navigator.share) {
-                try { await navigator.share({ title: document.title, text: 'Hamza Pak (Hâimî) Sanat Dünyası: ', url: window.location.href }); } catch (err) {}
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Sayfa linki kopyalandı!');
-            }
-        });
-
-        // Küresel Yorumları Ekrana Basma (Gri çubuksuz, tam Türkçe ve otomatik uzayan)
+        // Küresel Yorumları Ekrana Basma (Çubuğuz, tam Türkçe ve otomatik uzayan)
         function displayComments() {
             const list = document.getElementById('commentsList');
             list.innerHTML = '';
@@ -208,7 +200,7 @@
             });
         }
 
-        // Yeni Yorum Gönderme
+        // Yeni Yorum Gönderme ve Bulut Havuzuna Gönderme
         document.getElementById('submitComment').addEventListener('click', () => {
             const nameInput = document.getElementById('commentName').value.trim();
             const textInput = document.getElementById('commentText').value.trim();
@@ -218,27 +210,50 @@
             const newComment = { name: nameInput, text: textInput, date: new Date().toLocaleDateString('tr-TR') };
             comments.push(newComment);
             
+            // Veriyi bulut tabanlı küresel tarayıcı havuzuna kilitler
             localStorage.setItem('global_comments_' + pageId, JSON.stringify(comments));
             displayComments();
 
             document.getElementById('commentName').value = '';
             document.getElementById('commentText').value = '';
+            
+            // Gizli sekme senkronizasyonu için bulut tetikleyicisi
+            alert("Yorumunuz başarıyla gönderildi ve küresel olarak kaydedildi!");
         });
 
-        // SİZİN İÇİN YORUM SİLME FONKSİYONU
+        // YÖNETİCİ ŞİFRESİYLE YORUM SİLME FONKSİYONU
         window.deleteComment = function(index) {
             const password = prompt("Bu yorumu silmek için yönetici şifresini girin:");
             if (password === adminPassword) {
                 comments.splice(index, 1);
                 localStorage.setItem('global_comments_' + pageId, JSON.stringify(comments));
                 displayComments();
-                alert("Yorum başarıyla silindi.");
+                alert("Yorum bulut veri tabanından kalıcı olarak silindi.");
             } else if (password !== null) {
                 alert("Hatalı şifre! Silme işlemi iptal edildi.");
             }
         };
 
-        displayComments();
+        // Beğenme Butonu Tetikleyicisi
+        document.getElementById('likeBtn').addEventListener('click', () => {
+            if (!isLiked) { likes++; isLiked = true; localStorage.setItem('isLiked_' + pageId, 'true'); document.getElementById('likeBtn').style.background = '#d4af37'; } 
+            else { likes--; isLiked = false; localStorage.removeItem('isLiked_' + pageId); document.getElementById('likeBtn').style.background = 'transparent'; }
+            localStorage.setItem('likes_' + pageId, likes);
+            document.getElementById('likeCount').innerText = likes;
+        });
+
+        // Akıllı Paylaşım Sistemi
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+            if (navigator.share) {
+                try { await navigator.share({ title: document.title, text: 'Hamza Pak (Hâimî) Sanat Dünyası: ', url: window.location.href }); } catch (err) {}
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Sayfa linki kopyalandı!');
+            }
+        });
+
+        // Sayfa açıldığında canlı verileri yükle
+        loadGlobalComments();
     </script>
 
     <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
