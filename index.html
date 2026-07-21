@@ -60,16 +60,35 @@
         .content-section a:hover { color: #d4af37; border-bottom-color: #1a1a1a; }
         
         .right-side-panel { background: transparent; display: flex; flex-direction: column; }
-        .right-side-panel img { 
-            width: 200px; 
-            height: 300px; 
-            object-fit: cover; 
-            border-radius: 30%; 
-            border: 2px solid #d4af37; 
-            margin: 0 auto 20px auto; 
-            display: block;
-            transition: transform 0.3s; 
+                /* Resmi saran ve altın çizgiyi milimetrik oturtan yeni taşıyıcı kutu */
+        .profile-card-wrapper {
+            width: 200px; /* Sizin belirlediğiniz genişlik */
+            height: 300px; /* Sizin belirlediğiniz dikey yükseklik */
+            margin: 0 auto 20px auto; /* Panelin tam ortasına hizalar */
+            position: relative;
+            
+            /* SİHİRLİ DOKUNUŞ: Çerçeveyi resmin gri oval sınırlarına tam eşitleyen ayar */
+            border-radius: 75px; /* Resminizin üst ve alt oval kavisini milimetrik yakalar */
+            border: 2px solid #d4af37; /* Altın sarısı çizgiyi buraya sabitledik */
+            
+            overflow: hidden; /* Resmin kare köşeleri bu oval sınırın dışına taşamaz, kesilir */
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
         }
+        
+        /* Fareyle üzerine gelince tüm kutunun odaklanma efekti */
+        .profile-card-wrapper:hover {
+            transform: scale(1.04);
+        }
+
+        /* Kutunun içindeki asıl resminizin ayarları */
+        .profile-card-wrapper img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; /* Resmi ezmeden kutunun oval yapısına tam giydirir */
+            display: block;
+        }
+
         .right-side-panel img:hover { transform: scale(1.05); }
         .right-side-panel h3 { color: #1a1a1a; margin-bottom: 12px; font-size: 20px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid #d4af37; padding-bottom: 5px; text-align: center; line-height: 1.4; }
         .right-side-panel p { color: #555; font-size: 15px; line-height: 1.7; }
@@ -159,7 +178,12 @@
 
             <!-- SAĞ SÜTUN -->
             <div class="right-side-panel">
-                <img src="gorsel-dosyalari/photo/karakter.webp" alt="Kimim Ben?..">
+            
+                <!-- Resmi milimetrik saran yeni akıllı altın çerçeve kutusu -->
+                <div class="profile-card-wrapper">
+                    <img src="gorsel-dosyalari/photo/karakter.webp" alt="Kimim Ben?..">
+                </div>
+            
                 <h3>“Meçhûl olsa da ne kadar bildiğim,<br>Tek bildiğimdir yaşamayı bildiğim.“</h3>
                 <p>"Bazen fırçayla, bazen kalemle bir şeyler karalayarak zihnimi ve gönlümü keşfetmeye çalışmanın hikâyesidir bu."</p>
             </div>
