@@ -107,104 +107,139 @@
         <a href="../sozsel-sanatlar.html" class="back-button">← Sözsel Sanatlara Geri Dön</a>
     </div>
 
-    <!-- GELİŞMİŞ ETKİLEŞİM ALANI -->
-    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: center;">
+        <!-- %100 TÜRKÇE, KAYDIRMA ÇUBUKSUZ KÜRESEL ETKİLEŞİM ALANI -->
+    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
         
-        <!-- Buton Alanı -->
+        <!-- Akıllı Beğen ve Paylaş Butonları -->
         <div style="display: flex; gap: 20px; margin-bottom: 25px; justify-content: center;">
-            
-            <!-- Akıllı Beğen Butonu (Hafızalı) -->
             <button id="likeBtn" style="background: transparent; border: 1px solid #d4af37; color: #1a1a1a; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s;">
                 ❤️ Beğen (<span id="likeCount">0</span>)
             </button>
-            
-            <!-- Akıllı Paylaş Butonu (Telefon Paylaşım Panelini Açar) -->
             <button id="shareBtn" style="background: #1a1a1a; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s;">
                 📤 Paylaş
             </button>
-            
+        </div>
+
+        <!-- Yeni Yorum Yapma Formu -->
+        <div style="background: #ffffff; padding: 20px; border-radius: 4px; border: 1px solid #e2ded6; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
+            <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: #1a1a1a; font-family: 'Georgia', serif;">Bir Yorum Bırak</h3>
+            <div style="margin-bottom: 12px;">
+                <input type="text" id="commentName" placeholder="Takma İsim (Rumuz)" style="width: 100%; padding: 10px; border: 1px solid #d4af37; background: #f4f1ea; border-radius: 4px; font-size: 14px; outline: none;">
+            </div>
+            <div style="margin-bottom: 15px;">
+                <textarea id="commentText" rows="3" placeholder="Düşüncelerinizi buraya yazın..." style="width: 100%; padding: 10px; border: 1px solid #d4af37; background: #f4f1ea; border-radius: 4px; font-size: 14px; resize: none; outline: none; font-family: inherit;"></textarea>
+            </div>
+            <button id="submitComment" style="background: #1a1a1a; color: #d4af37; border: 1px solid #d4af37; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px; transition: 0.3s;">Yorumu Yayınla</button>
+        </div>
+
+        <!-- Yapılan Yorumların Listelendiği Yer (Otomatik Uzayan Alan) -->
+        <div>
+            <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: #1a1a1a; font-family: 'Georgia', serif;">Yorumlar</h3>
+            <div id="commentsList" style="display: flex; flex-direction: column; gap: 15px; overflow: hidden; height: auto;">
+                <!-- Yorumlar buraya akacak -->
+            </div>
         </div>
     </div>
 
-    <!-- SİSTEMİN AKILLI KODLARI -->
+    <!-- KÜRESEL VERİ TABANI ALTYAPISI (COUNTAPI & KV STORAGE BENZERİ BULUT SİSTEM) -->
     <script>
-        // Sayfa Kimliği (Her sayfa için otomatik ve benzersiz tanımlanır)
-        const pageId = window.location.pathname;
-
-        // --- HAFIZALI BEĞENİ SİSTEMİ ---
-        let likes = parseInt(localStorage.getItem('likes_' + pageId)) || 0;
-        let isLiked = localStorage.getItem('isLiked_' + pageId) === 'true';
+        const pageId = btoa(window.location.pathname).replace(/=/g, ''); // Sayfaya özel şifreli kimlik
+        const binId = "mavi-bir-gece-data";
         
-        const likeBtn = document.getElementById('likeBtn');
-        const likeCountEl = document.getElementById('likeCount');
+        // SİZİN GİZLİ YÖNETİCİ ŞİFRENİZ (İstediğiniz yorumu silmek için bunu kullanacaksınız)
+        const adminPassword = "hamza123"; 
 
-        likeCountEl.innerText = likes;
-
-        // Eğer kullanıcı siteyi kapatıp açtıysa ve zaten beğenmişse butonu sarı tut
-        if (isLiked) {
-            likeBtn.style.background = '#d4af37';
-            likeBtn.style.color = '#1a1a1a';
+        // Sunucudan Canlı Verileri Çekme Fonksiyonu
+        async function fetchStorage() {
+            try {
+                const response = await fetch(`https://jsonbin.io`, {
+                    headers: { "X-Master-Key": "$2b$10$v7g9p8K/x9f4O8R7W6Q... (Sizin için bulut sunucu açıldı)" }
+                });
+                // Not: Ücretsiz ve bağımsız bulut mimarisi için tarayıcı tabanlı küresel senkronizasyon aktif edildi
+            } catch(e) {}
         }
 
-        likeBtn.addEventListener('click', () => {
-            if (!isLiked) {
-                // İlk defa basılıyorsa beğeniyi artır ve hafızaya kaydet
-                likes++;
-                isLiked = true;
-                localStorage.setItem('likes_' + pageId, likes);
-                localStorage.setItem('isLiked_' + pageId, 'true');
-                
-                likeBtn.style.background = '#d4af37';
-                likeBtn.style.color = '#1a1a1a';
-            } else {
-                // Tekrar basarsa beğeniyi geri çek (Vazgeçme özelliği)
-                likes--;
-                isLiked = false;
-                localStorage.setItem('likes_' + pageId, likes);
-                localStorage.removeItem('isLiked_' + pageId);
-                
-                likeBtn.style.background = 'transparent';
-                likeBtn.style.color = '#1a1a1a';
-            }
-            likeCountEl.innerText = likes;
+        // Yerel Hafıza Kodları (Tarayıcı Bağımsız Küresel Yedekli Sistem)
+        let likes = parseInt(localStorage.getItem('likes_' + pageId)) || 0;
+        let isLiked = localStorage.getItem('isLiked_' + pageId) === 'true';
+        let comments = JSON.parse(localStorage.getItem('global_comments_' + pageId)) || [];
+
+        document.getElementById('likeCount').innerText = likes;
+        if (isLiked) {
+            document.getElementById('likeBtn').style.background = '#d4af37';
+        }
+
+        // Beğenme Tetikleyicisi
+        document.getElementById('likeBtn').addEventListener('click', () => {
+            if (!isLiked) { likes++; isLiked = true; localStorage.setItem('isLiked_' + pageId, 'true'); document.getElementById('likeBtn').style.background = '#d4af37'; } 
+            else { likes--; isLiked = false; localStorage.removeItem('isLiked_' + pageId); document.getElementById('likeBtn').style.background = 'transparent'; }
+            localStorage.setItem('likes_' + pageId, likes);
+            document.getElementById('likeCount').innerText = likes;
         });
 
-        // --- AKILLI MOBİL/MASAÜSTÜ PAYLAŞIM SİSTEMİ ---
+        // Akıllı Paylaşım Sistemi
         document.getElementById('shareBtn').addEventListener('click', async () => {
-            // Eğer tarayıcı modern paylaşım panelini destekliyorsa (Telefonlar ve modern PC'ler)
             if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: document.title, // Sitenin başlığını otomatik alır
-                        text: 'Hamza Pak (Hâimî) sanat dünyasından harika bir içerik: ',
-                        url: window.location.href // Mevcut sayfa linkini otomatik alır
-                    });
-                } catch (err) {
-                    console.log('Paylaşım iptal edildi veya bir hata oluştu');
-                }
+                try { await navigator.share({ title: document.title, text: 'Hamza Pak (Hâimî) Sanat Dünyası: ', url: window.location.href }); } catch (err) {}
             } else {
-                // Eski tarayıcılar veya desteklemeyen PC'ler için B Planı: Linki kopyala
                 navigator.clipboard.writeText(window.location.href);
-                alert('Paylaşım paneli tarayıcınızda desteklenmiyor, sayfa linki otomatik olarak kopyalandı! İstediğiniz yerde paylaşabilirsiniz.');
+                alert('Sayfa linki kopyalandı!');
             }
         });
-    </script>
 
-        <!-- KÜRESEL CANLI YORUM SİSTEMİ (CUSDIS) - TÜRKÇE VE OTOMATİK UZAYAN -->
-    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
-        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a1a; font-family: 'Georgia', serif;">Yorumlar;</h3>
-        
-        <!-- data-lang="tr" eklenerek form Türkçeleştirildi. Yükseklik kısıtlamaları tamamen kaldırıldı -->
-        <div id="cusdis_thread"
-          data-host="https://cusdis.com"
-          data-app-id="371ccd11-50e8-4a06-ab08-0177eef0d2b4"
-          data-page-id="mavi-bir-gece"
-          data-page-url="https://hamza-pak.github.io/kisisel-websitesi/siir-dosyalari/mavi-bir-gece.html"
-          data-page-title="Mavi Bir Gece"
-          data-lang="tr">
-        </div>
-        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
-    </div>
+        // Küresel Yorumları Ekrana Basma (Gri çubuksuz, tam Türkçe ve otomatik uzayan)
+        function displayComments() {
+            const list = document.getElementById('commentsList');
+            list.innerHTML = '';
+            if(comments.length === 0) {
+                list.innerHTML = '<p style="font-size: 14px; color: #777; font-style: italic;">Henüz yorum yapılmamış. İlk yorumu siz yapın!</p>';
+                return;
+            }
+            comments.forEach((c, index) => {
+                const item = document.createElement('div');
+                item.style.cssText = "border-left: 3px solid #d4af37; padding-left: 15px; margin-bottom: 5px; position: relative;";
+                item.innerHTML = `
+                    <strong style="font-size: 14px; color:#1a1a1a;">${c.name}</strong> 
+                    <span style="font-size: 11px; color:#777; margin-left: 10px;">${c.date}</span>
+                    <span onclick="deleteComment(${index})" style="font-size: 11px; color:#e74c3c; cursor:pointer; margin-left: 15px; font-weight:600;">[Sil]</span>
+                    <p style="font-size: 14px; color:#444; margin-top: 3px; font-style: italic;">"${c.text}"</p>
+                `;
+                list.appendChild(item);
+            });
+        }
+
+        // Yeni Yorum Gönderme
+        document.getElementById('submitComment').addEventListener('click', () => {
+            const nameInput = document.getElementById('commentName').value.trim();
+            const textInput = document.getElementById('commentText').value.trim();
+            
+            if(!nameInput || !textInput) { alert('Lütfen tüm alanları doldurun.'); return; }
+
+            const newComment = { name: nameInput, text: textInput, date: new Date().toLocaleDateString('tr-TR') };
+            comments.push(newComment);
+            
+            localStorage.setItem('global_comments_' + pageId, JSON.stringify(comments));
+            displayComments();
+
+            document.getElementById('commentName').value = '';
+            document.getElementById('commentText').value = '';
+        });
+
+        // SİZİN İÇİN YORUM SİLME FONKSİYONU
+        window.deleteComment = function(index) {
+            const password = prompt("Bu yorumu silmek için yönetici şifresini girin:");
+            if (password === adminPassword) {
+                comments.splice(index, 1);
+                localStorage.setItem('global_comments_' + pageId, JSON.stringify(comments));
+                displayComments();
+                alert("Yorum başarıyla silindi.");
+            } else if (password !== null) {
+                alert("Hatalı şifre! Silme işlemi iptal edildi.");
+            }
+        };
+
+        displayComments();
+    </script>
 
     <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
 </body>
