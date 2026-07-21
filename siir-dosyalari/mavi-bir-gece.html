@@ -105,13 +105,13 @@
 
         <!-- Geri Dönüş Butonu -->
         <a href="../sozsel-sanatlar.html" class="back-button">← Sözsel Sanatlara Geri Dön</a>
-    </div>
+    </div> <!-- DİKKAT: Şiir alanı kutusu burada kapandı -->
 
-        <!-- %100 TÜRKÇE, KAYDIRMA ÇUBUKSUZ KÜRESEL ETKİLEŞİM ALANI -->
+    <!-- %100 TÜRKÇE, KAYDIRMA ÇUBUKSUZ KÜRESEL ETKİLEŞİM ALANI -->
     <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
         
         <!-- Akıllı Beğen ve Paylaş Butonları -->
-        <div style="display: flex; gap: 20px; margin-bottom: 25px; justify-content: center;">
+        <div style="display: flex; gap: 20px; justify-content: center;">
             <button id="likeBtn" style="background: transparent; border: 1px solid #d4af37; color: #1a1a1a; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s;">
                 ❤️ Beğen (<span id="likeCount">0</span>)
             </button>
@@ -119,12 +119,13 @@
                 📤 Paylaş
             </button>
         </div>
+    </div> <!-- DİKKAT: Etkileşim (Beğeni/Paylaş) kutusu burada kapandı -->
 
     <!-- KÜRESEL GERÇEK YORUM ALANI (CUSDIS) - GRİ ÇUBUKSUZ VE TÜRKÇE -->
-    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
-        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a1a; font-family: 'Georgia', serif;">Yorumlar;</h3>
+    <div style="max-width: 600px; margin: 0 auto 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
+        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a1a; font-family: 'Georgia', serif;">Yorumlar</h3>
         
-        <!-- Gri çubuğu yok eden ve kutuyu esneten özel stil kodları yerleştirildi -->
+        <!-- Yorum sistemi eklentisi -->
         <div id="cusdis_thread"
           data-host="https://cusdis.com"
           data-app-id="371ccd11-50e8-4a06-ab08-0177eef0d2b4"
@@ -134,7 +135,7 @@
           data-lang="tr">
         </div>
         
-        <!-- Form kelimelerini (Nickname vb.) tarayıcıda zorla Türkçe yapan akıllı yama -->
+        <!-- Yorum Formunu Türkçeleştirme Scripti -->
         <script>
             window.CUSDIS_LOCALE = {
                 "powered_by": "Yorum Sistemi: Cusdis",
@@ -144,12 +145,12 @@
                 "email": "E-Posta (İsteğe Bağlı)",
                 "sending": "Gönderiliyor...",
                 "loading": "Yorumlar yükleniyor...",
-				"comment_has_been_sent": "Yorumunuz gönderildi, onay bekliyor...",
-				"content_is_required": "Lütfen Boşlukları Doldurunuz!"
+                "comment_has_been_sent": "Yorumunuz gönderildi, onay bekliyor...",
+                "content_is_required": "Lütfen Boşlukları Doldurunuz!"
             };
         </script>
         <script async defer src="../ek-dosyalar/cusdis.js"></script>
-    </div>
+    </div> <!-- DİKKAT: Yorum alanı kutusu da burada kapandı -->
 
     <!-- BEĞENİ VE PAYLAŞ BUTONLARININ SİSTEM KODLARI -->
     <script>
@@ -172,9 +173,10 @@
         });
     </script>
 
-	<!-- ANA DİZİNE BAĞLI TAM GENİŞLİKTEKİ SİYAH FOOTER -->
+    <!-- ANA DİZİNE BAĞLI TAM GENİŞLİKTEKİ SİYAH FOOTER -->
     <footer>
         <p>&copy; 2026 - Tüm Hakları Saklıdır.</p>
     </footer>
+
 </body>
 </html>
