@@ -12,7 +12,7 @@
             background-image: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4)), url('gorsel-dosyalari/photo/banner.webp'); 
             background-attachment: fixed; /* Resmi ekrana çiviler, sayfa kaysa da resim arkada sabit kalır */
             background-size: cover;
-            background-position: center top;
+            background-position: center bottom;
             background-color: #f4f1ea; 
             color: #1a1a1a; 
             line-height: 1.6; 
@@ -86,8 +86,7 @@
 
         /* 1. İstek: İletişim kısmından önce kirli beyaz katmanın bitip resmin altını gösteren boşluk alanı */
         .parallax-bottom-space {
-            height: 380px; /* Bu alanda arkadaki dev görselin alt kısmı pürüzsüzce açığa çıkar */
-            background: transparent;
+            height: 0px; display: none;
         }
 
         /* Sarı Tabanlı İletişim / Bilgi Alanı */
@@ -198,9 +197,6 @@
         </div>
 
     </div> <!-- Üst katman (kirli beyaz blok) burada kapandı -->
-
-    <!-- 1. İstek: Ana içerik bittikten sonra resmin alt kısmını gösteren pencere boşluğu -->
-    <div class="parallax-bottom-space"></div>
 
     <!-- SARI TABANLI İLETİŞİM VE KOMİSYON BÖLÜMÜ -->
     <div class="info-bar">
