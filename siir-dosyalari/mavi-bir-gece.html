@@ -154,7 +154,9 @@
 
     <!-- BEĞENİ VE PAYLAŞ BUTONLARININ SİSTEM KODLARI -->
     <script>
-        const pId = window.location.pathname;
+        // Listeyle ortak hafıza kartını konuşması için sabit kimlik atandı
+        const pId = "/siir-dosyalari/mavi-bir-gece.html"; 
+        
         let lks = parseInt(localStorage.getItem('likes_' + pId)) || 0;
         let lkd = localStorage.getItem('isLiked_' + pId) === 'true';
         document.getElementById('likeCount').innerText = lks;
