@@ -148,6 +148,19 @@
                 "empty": "Henüz yorum yapılmamış. İlk yorumu siz yapın!",
                 "loading": "Yorumlar yükleniyor..."
             };
+			
+			// Sayfa yüklendikten sonra arka planda "Reply" kelimesini avlayan akıllı gözcü
+            const replyFixer = setInterval(() => {
+                const targetFrame = document.querySelector('#cusdis_thread iframe');
+                if (targetFrame && targetFrame.contentDocument) {
+                    const buttons = targetFrame.contentDocument.querySelectorAll('button, a, span');
+                    buttons.forEach(btn => {
+                        if (btn.innerText && btn.innerText.trim().toLowerCase() === 'reply') {
+                            btn.innerText = 'Yanıtla';
+                        }
+                    });
+                }
+            }, 500); // Her yarım saniyede bir kontrol eder, form tam yüklendiği an yazıyı değiştirir.
         </script>
         <script async defer src="../ek-dosyalar/cusdis.js"></script>
     </div>
