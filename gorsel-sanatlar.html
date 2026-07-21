@@ -19,12 +19,14 @@
         .gallery-item img { width: 100%; height: 230px; object-fit: cover; display: block; border: 2px solid #d4af37; border-radius: 2px; transition: 0.3s; }
         .gallery-item img:hover { transform: scale(1.02); }
         .gallery-item p { padding: 15px 0 2px 0; text-align: center; font-weight: 600; font-size: 15px; color: #1a1a1a; }
-        
-        /* Yeni Eklenen Zarif Tarih Alanı */
         .artwork-date { font-size: 12px; color: #777; font-style: italic; margin-bottom: 10px; }
         
+        /* Butonları Yan Yana Dizen ve Beğen Butonunu Şekillendiren Alan */
+        .gallery-actions { display: flex; align-items: center; gap: 15px; margin-top: 5px; }
         .read-more { color: #d4af37; text-decoration: none; font-weight: 600; font-size: 13px; border-bottom: 1px dashed #d4af37; transition: 0.2s; }
         .read-more:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
+        .list-like-btn { background: transparent; border: 1px solid #d4af37; color: #1a1a1a; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
+        
         footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; margin-top: 80px; font-size: 13px; border-top: 2px solid #d4af37; }
         @media (max-width: 768px) { header h1 { font-size: 42px; } .container { margin: 30px auto; } }
     </style>
@@ -42,15 +44,50 @@
     <div class="container">
         <h2>Görsel Sanatlar</h2>
         <div class="gallery">
+            <!-- 1. Resim Kartı -->
             <div class="gallery-item">
                 <img src="https://picsum.photos" alt="Doğa Manzarası">
                 <p>Doğa Manzarası Çalışmam</p>
-                <!-- İstediğiniz Tarih Kısmı -->
                 <span class="artwork-date">Haziran 2026</span>
-                <a href="resim-dosyalari/doga-manzarasi.html" class="read-more">Detayları Gör...</a>
+                
+                <div class="gallery-actions">
+                    <a href="resim-dosyalari/doga-manzarasi.html" class="read-more">Detayları Gör...</a>
+                    <!-- Gizli Sayılı Ortak Beğeni Butonu -->
+                    <button class="list-like-btn" data-id="/resim-dosyalari/doga-manzarasi.html">
+                        ❤️ Beğen <span class="like-count" style="display: none;">0</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
     <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
+
+    <!-- SENKRONİZASYON SCRIPT KODU -->
+    <script>
+        document.querySelectorAll('.list-like-btn').forEach(btn => {
+            const id = btn.getAttribute('data-id');
+            const countSpan = btn.querySelector('.like-count');
+            let likes = parseInt(localStorage.getItem('likes_' + id)) || 0;
+            let isLiked = localStorage.getItem('isLiked_' + id) === 'true';
+            countSpan.innerText = likes;
+            if (isLiked) btn.style.background = '#d4af37';
+
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isLiked) {
+                    likes++; isLiked = true;
+                    localStorage.setItem('likes_' + id, likes);
+                    localStorage.setItem('isLiked_' + id, 'true');
+                    btn.style.background = '#d4af37';
+                } else {
+                    likes--; isLiked = false;
+                    localStorage.setItem('likes_' + id, likes);
+                    localStorage.removeItem('isLiked_' + id);
+                    btn.style.background = 'transparent';
+                }
+                countSpan.innerText = likes;
+            });
+        });
+    </script>
 </body>
 </html>
