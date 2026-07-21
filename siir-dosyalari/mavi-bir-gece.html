@@ -120,140 +120,57 @@
             </button>
         </div>
 
-        <!-- Yeni Yorum Yapma Formu -->
-        <div style="background: #ffffff; padding: 20px; border-radius: 4px; border: 1px solid #e2ded6; margin-bottom: 25px; box-shadow: 0 4px 10px rgba(0,0,0,0.02);">
-            <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: #1a1a1a; font-family: 'Georgia', serif;">Bir Yorum Bırak</h3>
-            <div style="margin-bottom: 12px;">
-                <input type="text" id="commentName" placeholder="Takma İsim (Rumuz)" style="width: 100%; padding: 10px; border: 1px solid #d4af37; background: #f4f1ea; border-radius: 4px; font-size: 14px; outline: none;">
-            </div>
-            <div style="margin-bottom: 15px;">
-                <textarea id="commentText" rows="3" placeholder="Düşüncelerinizi buraya yazın..." style="width: 100%; padding: 10px; border: 1px solid #d4af37; background: #f4f1ea; border-radius: 4px; font-size: 14px; resize: none; outline: none; font-family: inherit;"></textarea>
-            </div>
-            <button id="submitComment" style="background: #1a1a1a; color: #d4af37; border: 1px solid #d4af37; padding: 8px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 14px; transition: 0.3s;">Yorumu Yayınla</button>
+    <!-- KÜRESEL GERÇEK YORUM ALANI (CUSDIS) - GRİ ÇUBUKSUZ VE TÜRKÇE -->
+    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
+        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a1a; font-family: 'Georgia', serif;">Ziyaretçi Yorumları</h3>
+        
+        <!-- Gri çubuğu yok eden ve kutuyu esneten özel stil kodları yerleştirildi -->
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="371ccd11-50e8-4a06-ab08-0177eef0d2b4"
+          data-page-id="mavi-bir-gece"
+          data-page-url="https://hamza-pak.github.io/kisisel-websitesi/siir-dosyalari/mavi-bir-gece.html"
+          data-page-title="Mavi Bir Gece"
+          data-lang="tr"
+          style="width: 100%; min-height: 480px; overflow: hidden; display: block;">
         </div>
-
-        <!-- Yapılan Yorumların Listelendiği Yer (Otomatik Uzayan Alan) -->
-        <div>
-            <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; color: #1a1a1a; font-family: 'Georgia', serif;">Yorumlar</h3>
-            <div id="commentsList" style="display: flex; flex-direction: column; gap: 15px; overflow: hidden; height: auto;">
-                <!-- Yorumlar buraya akacak -->
-            </div>
-        </div>
+        
+        <!-- Form kelimelerini (Nickname vb.) tarayıcıda zorla Türkçe yapan akıllı yama -->
+        <script>
+            window.CUSDIS_LOCALE = {
+                "powered_by": "Yorum Sistemi: Cusdis",
+                "post_comment": "Yorumu Yayınla",
+                "placeholder": "Düşüncelerinizi buraya yazın...",
+                "nickname": "Takma İsim (Rumuz)",
+                "mail": "E-Posta (İsteğe Bağlı)",
+                "sending": "Gönderiliyor...",
+                "modrating": "Yorumunuz onay bekliyor...",
+                "empty": "Henüz yorum yapılmamış. İlk yorumu siz yapın!",
+                "loading": "Yorumlar yükleniyor..."
+            };
+        </script>
+        <script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
     </div>
 
-    <!-- SİSTEMİ GERÇEK KÜRESEL BULUT VERİ TABANINA BAĞLAYAN AKILLI KODLAR -->
+    <!-- BEĞENİ VE PAYLAŞ BUTONLARININ SİSTEM KODLARI -->
     <script>
-        // Sayfa Kimliği (Her sayfa için benzersiz küresel anahtar)
-        const pageId = "haimi_mavi_bir_gece_siiri";
-        
-        // SİZİN GİZLİ YÖNETİCİ ŞİFRENİZ (İstediğiniz yorumu silmek için)
-        const adminPassword = "hamza123"; 
+        const pId = window.location.pathname;
+        let lks = parseInt(localStorage.getItem('likes_' + pId)) || 0;
+        let lkd = localStorage.getItem('isLiked_' + pId) === 'true';
+        document.getElementById('likeCount').innerText = lks;
+        if (lkd) document.getElementById('likeBtn').style.background = '#d4af37';
 
-        // Ücretsiz ve Sınırsız Küresel Veri Deposu (CountAPI & Key-Value Cloud)
-        const cloudUrl = `https://countapi.xyz{pageId}`;
-        const dbUrl = `https://rapidapi.com{pageId}/records`;
-        
-        // Not: Kodlama bilmeyenler için statik sitelerde %100 çalışan, 
-        // harici bağımsız ve güvenli ücretsiz bulut senkronizasyon havuzu aktifleştirildi.
-        let likes = parseInt(localStorage.getItem('likes_' + pageId)) || 0;
-        let isLiked = localStorage.getItem('isLiked_' + pageId) === 'true';
-        
-        // Küresel Yorum Hafızası
-        let comments = [];
-
-        document.getElementById('likeCount').innerText = likes;
-        if (isLiked) document.getElementById('likeBtn').style.background = '#d4af37';
-
-        // --- BULUT SUNUCUDAN YORUMLARI CANLI ÇEKME SİSTEMİ ---
-        // Bu fonksiyon dünyadaki herkesin yazdığı yorumları ortak havuzdan canlı olarak çeker
-        async function loadGlobalComments() {
-            const list = document.getElementById('commentsList');
-            
-            // Yerel yedekle senkronizasyon kurarak gizli sekme engelini aşan akıllı hibrit altyapı
-            let localBackup = localStorage.getItem('global_comments_' + pageId);
-            if (localBackup) {
-                comments = JSON.parse(localBackup);
-            } else {
-                comments = [];
-            }
-            displayComments();
-        }
-
-        // Küresel Yorumları Ekrana Basma (Çubuğuz, tam Türkçe ve otomatik uzayan)
-        function displayComments() {
-            const list = document.getElementById('commentsList');
-            list.innerHTML = '';
-            if(comments.length === 0) {
-                list.innerHTML = '<p style="font-size: 14px; color: #777; font-style: italic;">Henüz yorum yapılmamış. İlk yorumu siz yapın!</p>';
-                return;
-            }
-            comments.forEach((c, index) => {
-                const item = document.createElement('div');
-                item.style.cssText = "border-left: 3px solid #d4af37; padding-left: 15px; margin-bottom: 5px; position: relative;";
-                item.innerHTML = `
-                    <strong style="font-size: 14px; color:#1a1a1a;">${c.name}</strong> 
-                    <span style="font-size: 11px; color:#777; margin-left: 10px;">${c.date}</span>
-                    <span onclick="deleteComment(${index})" style="font-size: 11px; color:#e74c3c; cursor:pointer; margin-left: 15px; font-weight:600;">[Sil]</span>
-                    <p style="font-size: 14px; color:#444; margin-top: 3px; font-style: italic;">"${c.text}"</p>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        // Yeni Yorum Gönderme ve Bulut Havuzuna Gönderme
-        document.getElementById('submitComment').addEventListener('click', () => {
-            const nameInput = document.getElementById('commentName').value.trim();
-            const textInput = document.getElementById('commentText').value.trim();
-            
-            if(!nameInput || !textInput) { alert('Lütfen tüm alanları doldurun.'); return; }
-
-            const newComment = { name: nameInput, text: textInput, date: new Date().toLocaleDateString('tr-TR') };
-            comments.push(newComment);
-            
-            // Veriyi bulut tabanlı küresel tarayıcı havuzuna kilitler
-            localStorage.setItem('global_comments_' + pageId, JSON.stringify(comments));
-            displayComments();
-
-            document.getElementById('commentName').value = '';
-            document.getElementById('commentText').value = '';
-            
-            // Gizli sekme senkronizasyonu için bulut tetikleyicisi
-            alert("Yorumunuz başarıyla gönderildi ve küresel olarak kaydedildi!");
-        });
-
-        // YÖNETİCİ ŞİFRESİYLE YORUM SİLME FONKSİYONU
-        window.deleteComment = function(index) {
-            const password = prompt("Bu yorumu silmek için yönetici şifresini girin:");
-            if (password === adminPassword) {
-                comments.splice(index, 1);
-                localStorage.setItem('global_comments_' + pageId, JSON.stringify(comments));
-                displayComments();
-                alert("Yorum bulut veri tabanından kalıcı olarak silindi.");
-            } else if (password !== null) {
-                alert("Hatalı şifre! Silme işlemi iptal edildi.");
-            }
-        };
-
-        // Beğenme Butonu Tetikleyicisi
         document.getElementById('likeBtn').addEventListener('click', () => {
-            if (!isLiked) { likes++; isLiked = true; localStorage.setItem('isLiked_' + pageId, 'true'); document.getElementById('likeBtn').style.background = '#d4af37'; } 
-            else { likes--; isLiked = false; localStorage.removeItem('isLiked_' + pageId); document.getElementById('likeBtn').style.background = 'transparent'; }
-            localStorage.setItem('likes_' + pageId, likes);
-            document.getElementById('likeCount').innerText = likes;
+            if (!lkd) { lks++; lkd = true; localStorage.setItem('isLiked_' + pId, 'true'); document.getElementById('likeBtn').style.background = '#d4af37'; } 
+            else { lks--; lkd = false; localStorage.removeItem('isLiked_' + pId); document.getElementById('likeBtn').style.background = 'transparent'; }
+            localStorage.setItem('likes_' + pId, lks);
+            document.getElementById('likeCount').innerText = lks;
         });
 
-        // Akıllı Paylaşım Sistemi
         document.getElementById('shareBtn').addEventListener('click', async () => {
-            if (navigator.share) {
-                try { await navigator.share({ title: document.title, text: 'Hamza Pak (Hâimî) Sanat Dünyası: ', url: window.location.href }); } catch (err) {}
-            } else {
-                navigator.clipboard.writeText(window.location.href);
-                alert('Sayfa linki kopyalandı!');
-            }
+            if (navigator.share) { try { await navigator.share({ title: document.title, url: window.location.href }); } catch (err) {} } 
+            else { navigator.clipboard.writeText(window.location.href); alert('Link kopyalandı!'); }
         });
-
-        // Sayfa açıldığında canlı verileri yükle
-        loadGlobalComments();
     </script>
 
     <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
