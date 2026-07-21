@@ -5,47 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sözsel Sanatlar | Hamza Pak (Hâimî)</title>
     <style>
-        /* Renk Paleti: Kirli Beyaz (#f4f1ea), Siyah (#1a1a1a), Altın Sarısı (#d4af37) */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.6; }
-        
-        /* Üst Menü / Header */
+        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.8; }
         header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
         header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; }
-        
         nav { margin-top: 15px; }
         nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; transition: 0.3s; font-size: 14px; letter-spacing: 1px; }
         nav a:hover, nav a.active { color: #1a1a1a; background: #d4af37; }
 
-        /* İçerik Alanı */
         .container { max-width: 700px; margin: 50px auto; padding: 0 20px; }
         h2 { text-align: center; margin-bottom: 50px; color: #1a1a1a; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
         
-        /* Şiirlerin Sergilenme Alanı (Sol Altın Çizgili) */
         .poem-section { background: transparent; padding: 10px 0 10px 30px; margin-bottom: 50px; border-left: 3px solid #d4af37; }
-        
         .poem-title { font-family: 'Georgia', serif; font-weight: bold; font-size: 24px; color: #1a1a1a; letter-spacing: 1px; margin-bottom: 3px; }
-        
-        /* Yeni İstek: Tarih Alanı */
         .poem-date { font-size: 13px; color: #777; display: block; font-style: italic; margin-bottom: 5px; }
-        
-        /* Yeni İstek: Tarihin Altındaki Ek Açıklama / Not Bölümü */
         .poem-note { font-size: 14px; color: #666; font-style: italic; line-height: 1.5; margin-bottom: 15px; max-width: 600px; }
-        
         .poem-body { font-family: 'Georgia', serif; font-style: italic; font-size: 16px; color: #333; }
         
-        .read-more { display: inline-block; margin-top: 15px; color: #d4af37; text-decoration: none; font-weight: 600; font-size: 14px; border-bottom: 1px dashed #d4af37; transition: 0.2s; }
+        /* Butonları Alt Alta Değil Yan Yana Dizen Alan */
+        .poem-actions { display: flex; align-items: center; gap: 20px; margin-top: 15px; }
+        .read-more { color: #d4af37; text-decoration: none; font-weight: 600; font-size: 14px; border-bottom: 1px dashed #d4af37; transition: 0.2s; }
         .read-more:hover { color: #1a1a1a; border-bottom-color: #1a1a1a; }
         
-        footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; margin-top: 80px; font-size: 13px; border-top: 2px solid #d4af37; }
-        @media (max-width: 768px) { 
-		header h1 { font-size: 42px; } 
-    		.container { margin: 30px auto; } 
-    		/* Telefonlarda şiir başlığını ve mısraları küçülten yeni ayar */
-    		.poem-title { font-size: 19px; }
-    		.poem-body { font-size: 14px; }
-	}
+        /* Listedeki Küçük Beğen Butonunun Tasarımı */
+        .list-like-btn { background: transparent; border: 1px solid #d4af37; color: #1a1a1a; padding: 4px 10px; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 12px; display: flex; align-items: center; gap: 5px; transition: 0.3s; }
 
+        footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; margin-top: 80px; font-size: 13px; border-top: 2px solid #d4af37; }
+        @media (max-width: 768px) { header h1 { font-size: 42px; } .container { margin: 30px auto; } .poem-title { font-size: 19px; } .poem-body { font-size: 14px; } }
     </style>
 </head>
 <body>
@@ -66,33 +52,71 @@
         <!-- 1. Şiir Özeti -->
         <div class="poem-section">
             <div class="poem-title">Mavi Bir Gece</div>
-            <!-- Tarih ve Ek Not Alanları -->
             <span class="poem-date">Yazılış: 19 Temmuz 2026</span>
-            <div class="poem-note">Not: Yağmurlu bir İstanbul akşamında, eski bir plaktan süzülen melodilere eşlik ederken kaleme alınmıştır.</div>
+            <div class="poem-note">Not: Yağmurlu bir İstanbul akşamında kaleme alınmıştır.</div>
+            <div class="poem-body">Gözlerin bir deniz gibi derin,<br>Sözlerin rüzgarı o serin yerin...</div>
             
-            <div class="poem-body">
-                Gözlerin bir deniz gibi derin,<br>
-                Sözlerin rüzgarı o serin yerin...
+            <div class="poem-actions">
+                <a href="siir-dosyalari/mavi-bir-gece.html" class="read-more">Devamını Oku...</a>
+                <!-- Listeye Eklenen Ortak Beğeni Butonu (data-id şiirin link adıyla birebir eşleşmeli) -->
+                <button class="list-like-btn" data-id="/siir-dosyalari/mavi-bir-gece.html">
+                    ❤️ Beğen (<span class="like-count">0</span>)
+                </button>
             </div>
-            <a href="siir-dosyalari/mavi-bir-gece.html" class="read-more">Devamını Oku...</a>
         </div>
 
         <!-- 2. Şiir Özeti -->
         <div class="poem-section">
             <div class="poem-title">Sonbahar Yaprakları</div>
-            <!-- Tarih ve Ek Not Alanları -->
             <span class="poem-date">Yazılış: 12 Ekim 2025</span>
-            <div class="poem-note">Not: Mevsim geçişlerinin insan ruhunda bıraktığı o tatlı melankoliyi ve vedaları anlatır.</div>
+            <div class="poem-note">Not: Mevsim geçişlerinin insan ruhundaki tatlı melankolisini anlatır.</div>
+            <div class="poem-body">Sarı yapraklar düşer yere,<br>Zaman akar gider bir kere...</div>
             
-            <div class="poem-body">
-                Sarı yapraklar düşer yere,<br>
-                Zaman akar gider bir kere...
+            <div class="poem-actions">
+                <a href="siir-dosyalari/sonbahar-yapraklari.html" class="read-more">Devamını Oku...</a>
+                <button class="list-like-btn" data-id="/siir-dosyalari/sonbahar-yapraklari.html">
+                    ❤️ Beğen (<span class="like-count">0</span>)
+                </button>
             </div>
-            <a href="siir-dosyalari/sonbahar-yapraklari.html" class="read-more">Devamını Oku...</a>
         </div>
-        
     </div>
 
     <footer><p>&copy; 2026 - Tüm Hakları Saklıdır.</p></footer>
+
+    <!-- LİSTEDEKİ BEĞENİLERİ DETAY SAYFALARIYLA SENKRONİZE EDEN AKILLI KODLAR -->
+    <script>
+        document.querySelectorAll('.list-like-btn').forEach(btn => {
+            const id = btn.getAttribute('data-id');
+            const countSpan = btn.querySelector('.like-count');
+            
+            // Ortak hafıza kartından verileri çek
+            let likes = parseInt(localStorage.getItem('likes_' + id)) || 0;
+            let isLiked = localStorage.getItem('isLiked_' + id) === 'true';
+            
+            countSpan.innerText = likes;
+            if (isLiked) {
+                btn.style.background = '#d4af37';
+            }
+
+            // Listeden tıklandığında hem sayıyı güncelle hem rengi değiştir
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (!isLiked) {
+                    likes++;
+                    isLiked = true;
+                    localStorage.setItem('likes_' + id, likes);
+                    localStorage.setItem('isLiked_' + id, 'true');
+                    btn.style.background = '#d4af37';
+                } else {
+                    likes--;
+                    isLiked = false;
+                    localStorage.setItem('likes_' + id, likes);
+                    localStorage.removeItem('isLiked_' + id);
+                    btn.style.background = 'transparent';
+                }
+                countSpan.innerText = likes;
+            });
+        });
+    </script>
 </body>
 </html>
