@@ -8,16 +8,18 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         
         /* 1. İstek: Sizin banner görselinizi tüm sayfanın arkasına sabitleyerek Paralaks yapıyoruz */
-        body { 
-            background-image: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4)), url('gorsel-dosyalari/photo/banner.webp'); 
-            background-attachment: fixed; /* Resmi ekrana çiviler, sayfa kaysa da resim arkada sabit kalır */
-            background-size: cover;
-            background-position: center bottom;
-            background-color: #f4f1ea; 
-            color: #1a1a1a; 
-            line-height: 1.6; 
-        }
-        
+    body { 
+        background-image: linear-gradient(rgba(26, 26, 26, 0.4), rgba(26, 26, 26, 0.4)), url('gorsel-dosyalari/photo/banner.webp'); 
+        background-attachment: fixed; 
+        /* 1. Dokunuş: Resmi ne yukarıya ne aşağıya, tam ortaya merkezliyoruz */
+        background-position: center center; 
+        /* 2. Dokunuş: Resmin hem üstten hem alttan kesilmeden ekrana tam sığmasını sağlıyoruz */
+        background-size: 100% 100%; 
+        background-color: #f4f1ea; 
+        color: #1a1a1a; 
+        line-height: 1.6; 
+    }
+  
         /* Üst Menü / Header (Resmin üstünde, normal yerinde sabit kalacak) */
         header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; position: relative; z-index: 10; }
         header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; text-align: center; }
