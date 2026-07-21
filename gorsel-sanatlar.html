@@ -17,16 +17,23 @@
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 35px; }
         .gallery-item { background: transparent; display: flex; flex-direction: column; align-items: center; }
         .gallery-item img { 
-            width: 100%; 
-            height: auto; /* Sabit pikseli kaldırdık, artık resmin orijinal boyuna göre otomatik esneyecek */
-            object-fit: contain; /* Resmi asla kırpmaz, tüm orijinal oranlarını korur */
-            border: 2px solid #d4af37; 
+            width: 280px; /* Çerçevenin genişliğini daha küçük ve zarif bir boyuta sabitledik */
+            height: 280px; /* Yüksekliği de eşitleyerek kusursuz bir kare (1:1) elde ettik */
+            
+            /* SİHİRLİ DOKUNUŞ: Kısa kenarı baz alır, resmi ezmeden merkezden kare sığdırır */
+            object-fit: cover; 
+            
+            border: 2px solid #d4af37; /* Altın sarısı ince çerçeve */
             border-radius: 2px;
             display: block;
+            margin: 0 auto; /* Kare çerçeveyi kendi sütununda tam ortalar */
             transition: transform 0.3s, box-shadow 0.3s; 
         }
-
-        .gallery-item img:hover { transform: scale(1.02); }
+        
+        .gallery-item img:hover { 
+            transform: scale(1.03); 
+            box-shadow: 0 10px 20px rgba(26,26,26,0.12);
+        }
         .gallery-item p { padding: 15px 0 2px 0; text-align: center; font-weight: 600; font-size: 15px; color: #1a1a1a; }
         .artwork-date { font-size: 12px; color: #777; font-style: italic; margin-bottom: 10px; }
         
