@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dörtlükler Defteri | Hamza Pak (Hâimî)</title>
+    <style>
+        /* Renk Paleti: Kirli Beyaz (#f4f1ea), Siyah (#1a1a1a), Altın Sarısı (#d4af37) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body, html { height: 100%; background-color: #f4f1ea; color: #1a1a1a; overflow: hidden; }
+        
+        /* Üst Menü / Header (Diğer sayfalarla birebir uyumlu) */
+        header { background: #1a1a1a; color: #f4f1ea; padding: 25px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 38px; color: #d4af37; margin-bottom: 5px; font-weight: normal; }
+        
+        nav { margin-top: 10px; }
+        nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; transition: 0.3s; font-size: 14px; letter-spacing: 1px; }
+        nav a:hover, nav a.active { color: #1a1a1a; background: #d4af37; }
+
+        /* Defterin Ekranı Kaplamasını Sağlayan Konteyner */
+        .flipbook-container {
+            width: 100%;
+            height: calc(100vh - 120px); /* Ekran yüksekliğinden header'ı düşer, tam sığdırır */
+            background: #f4f1ea;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hamza Pak (Hâimî)</h1>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="sozsel-sanatlar.html">Sözsel Sanatlar</a>
+            <a href="gorsel-sanatlar.html">Görsel Sanatlar</a>
+            <a href="biraz-muhabbet.html">Biraz Muhabbet</a>
+            <a href="defter.html" class="active">Dörtlükler Defteri</a>
+        </nav>
+    </header>
+
+    <!-- HEYZINE DEFTER GÖMME ALANI -->
+    <div class="flipbook-container">
+        <!-- ⚠️ BURAYI DÜZENLEYİN: Heyzine'den aldığınız linki src="..." kısmına yapıştırın -->
+        <iframe src="https://heyzine.com/flip-book/53c8958a80.html" allowfullscreen allow="clipboard-write"></iframe>
+    </div>
+
+</body>
+</html>
