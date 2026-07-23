@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bir Tutam Mîras ve Göksu | Sözsel Sanatlar</title>
+    <style>
+        /* Renk Paleti: Kirli Beyaz (#f4f1ea), Siyah (#1a1a1a), Altın Sarısı (#d4af37) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.6; }
+        
+        /* Üst Menü / Header */
+        header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; }
+        
+        nav { margin-top: 15px; }
+        nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; transition: 0.3s; font-size: 14px; letter-spacing: 1px; }
+        nav a:hover { color: #1a1a1a; background: #d4af37; }
+        
+        /* Şiir Detay Alanı */
+        .container { max-width: 600px; margin: 60px auto; padding: 0 20px; text-align: center; }
+        
+        .poem-full-title { font-family: 'Georgia', serif; font-size: 32px; font-weight: bold; color: #1a1a1a; margin-bottom: 5px; letter-spacing: 1px; }
+        
+        /* Tarih Alanı */
+        .poem-full-date { font-size: 13px; color: #777; display: block; font-style: italic; margin-bottom: 5px; }
+        
+        /* İstediğiniz Stil: Üst Hikaye/Açıklama Metni */
+        .poem-full-note { font-size: 15px; color: #666; font-style: italic; line-height: 1.6; margin: 0 auto 35px auto; max-width: 500px; border-bottom: 1px solid #d4af37; padding-bottom: 20px; }
+        
+        /* Şiir Gövdesi */
+        .poem-full-body { font-family: 'Georgia', serif; font-style: italic; font-size: 19px; color: #1a1a1a; margin-bottom: 35px; }
+        
+        /* İstediğiniz Yeni Alt Çizgi Tasarımı */
+        .poem-bottom-line { 
+		width: 100%; 
+		max-width: 530px; /* Büyük ekranlarda 530px kalır, mobilde ekrana sığar */
+		margin: 0 auto 25px auto; 
+		border-bottom: 2px solid #d4af37; 
+	}
+        
+        /* İstediğiniz Yeni Stil: Alt Kapanış/Dipnot Metni */
+        .poem-footer-note { font-size: 15px; color: #666; font-style: italic; line-height: 1.6; margin: 0 auto 45px auto; max-width: 500px; }
+        
+        /* Geri Dön Butonu */
+        .back-button { display: inline-block; padding: 10px 25px; background: #1a1a1a; color: #d4af37; text-decoration: none; font-weight: 600; font-size: 14px; border: 1px solid #d4af37; border-radius: 4px; transition: 0.3s; }
+        .back-button:hover { background: #d4af37; color: #1a1a1a; }
+        
+        footer { text-align: center; padding: 25px; background: #1a1a1a; color: #f4f1ea; margin-top: 100px; font-size: 13px; border-top: 2px solid #d4af37; }
+	@media (max-width: 768px) {
+		header h1 { font-size: 42px; }
+   	 	.container { margin: 30px auto; }
+  	 	/* Telefonlarda uzun dizelerin sığması için yazıyı küçülten yeni ayar */
+  	  	.poem-full-title { font-size: 24px; }
+  	  	.poem-full-body { font-size: 15px; }
+  	  	.poem-full-note, .poem-footer-note { font-size: 13px; }
+	}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hamza Pak (Hâimî)</h1>
+        <nav>
+            <a href="../index.html">Ana Sayfa</a>
+            <a href="../sozsel-sanatlar.html">Sözsel Sanatlar</a>
+            <a href="../gorsel-sanatlar.html">Görsel Sanatlar</a>
+            <a href="../biraz-muhabbet.html">Biraz Muhabbet</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Başlık -->
+        <h2 class="poem-full-title">Bir Tutam Mîras ve Göksu</h2>
+        
+        <!-- Tarih -->
+        <span class="poem-full-date">Tarih: 2023</span>
+        
+        <!-- Üst Hikaye Notu -->
+        <div class="poem-full-note">
+            Serbest Nazım<br><br>
+            “Bir yalnız bunu yazan,<br>
+            Yazdığıysa artık olmayan.<br>
+            Habersizce dolaştığım günde gelen haber,<br>
+            Sesi titreyen bir gülden çıkan.<br>
+            Baba hasretini anlayan bir evlat,<br>
+            Atasını kaybeden bir soy,<br>
+            Hüzne boğulan bir şehir.<br>
+            Ümmet aşığı ayrıldı bu diyardan.<br>
+            Arkasında bıraktığı ilminin mirası…<br>
+            Ellerini yıkadığı suyun hasreti.<br>
+            O su ki adını gökten alan,<br>
+            Üstüne yansıdı mı Göksu olan?<br>
+            O Göksu ki Konya’nın damarı.<br>
+            Kayboldu onun ruhuyla beraber.<br>
+            Önce onun ruhu, ardından sırdaşı göçtü.<br>
+            Susma artık Göksu dedemi anlat bana,<br>
+            Hasret yaşayan çok kul var burada.<br>
+            Artık bu mirasın gardiyanısın, unutma!”
+        </div>
+        
+        <!-- Şiirin Tamamı -->
+        <div class="poem-full-body">
+            Ne bu sessizlik, bu titreme;<br>
+            Neden durdu kayalara vurduğun coşku?<br>
+            Senin de mi kesildi nefesin?<br>
+            Bugün şehrin damarları kırık,<br>
+            Yatakların da çatlaklar var.<br>
+            Konya’nın hüznü mü titretti seni,<br>
+            Belki de önce sen hissettin<br>
+            Kaybolan güzelliğini.<br>
+            Sen kestin Konya’nın damarını Göksu,<br>
+            Artık kayboldu adını aldığın o, gök gibi su.<br><br>
+          
+            Şehrin insanları hüzünlü,<br>
+            Dostlar, akrabalar, kardeşler, arkadaşlar…<br>
+            Bütün şehri donduran gözyaşları,<br>
+            Lakin damarları kuruyan iki kişi.<br>
+            Biri sensin, sesi kesilen, hüznün vârisi.<br>
+            Diğeri ben, duyguları kilitli, kalbin haini.<br><br>
+          
+            Bu nasıl hüzün Göksu!<br>
+            Sen bile kaybettin rengini,<br>
+            Sarıldın onu alan kara toprağın rengine.<br>
+            Yavaş yavaş kayboluyorsun sen de.<br>
+            O şimdi meleklerin yanında,<br>
+            Lakin dostum senin yolun nereye?<br>
+            Önce onun ruhu, sonra senin sesin<br>
+            Neden bu ayrılık Göksu?<br>
+            Beni iyileştiren sesin yok,<br>
+            Dertlerimi anlattığım rengin yok,<br>
+            Bana cevap veren ruhun yok.<br>
+            Dinle Göksu, geliyor<br>
+            Bu satırların sahibi geliyor.<br>
+            Ben duyamıyorum, sen duy Göksu.<br>
+            Ruhum yok, duygum yok, varlığım ne var ne yok.<br>
+            Onun heybetini görüyor musun?<br>
+            Ruhu derece derece yükselmiş,<br><br>
+            
+            Artık hissedemiyorum Göksu.<br>
+            Bana haber ver, çevirdi mi başını benden?<br>
+            Yine haklısın, her zaman ki gibi<br>
+            Hiç layık olamadım servetine.<br>
+            Bundan sebep kesildi sesin.<br>
+            Söyle Göksu, susma sen!<br>
+            Herkesten sonra sende mi terk edeceksin?<br>
+            Bağır, çağır, say ama susma.<br>
+            İçimdeki o ben, onunla bırakma beni.<br>
+            “Sana anlattıklarım gerçek” diyor,<br>
+            Sen söyle Göksu hakikat mi anlattıkları?<br>
+            Kurtar beni, onun mirası sarsılıyor.<br>
+            Bu miras sadece benim değil bütün Konya’nın,<br>
+            Damarını kestiğin şehrin Göksu<br>
+            Bunu korumak senin görevin değil mi?<br>
+            Neden bana yükleyip çekildin sinene?<br>
+            Benim bu mirasa dayanacak gücüm yok.<br>
+            Kurtar beni, sahip çık Göksu<br>
+            Onun mirası kayboluyor.<br>
+            Diril, diril ve haykır herkese.<br>
+            Bu onun mirası, sadece onun değil<br>
+            Bütün İslam’ın mirası.<br>
+            Kaybolan miras geri gelmez.<br>
+            Yenilemezsin, hakkın yok. Göksu
+        </div>
+
+        <!-- İstediğiniz Şiir Altı Çizgisi -->
+        <div class="poem-bottom-line"></div>
+
+        <!-- İstediğiniz Yeni Şiir Altı Not Alanı (Aynı Stilde) -->
+        <div class="poem-footer-note">
+            ...
+        </div>
+
+        <!-- Geri Dönüş Butonu -->
+        <a href="../sozsel-sanatlar.html" class="back-button">← Sözsel Sanatlara Geri Dön</a>
+    </div> <!-- DİKKAT: Şiir alanı kutusu burada kapandı -->
+
+    <!-- %100 TÜRKÇE, KAYDIRMA ÇUBUKSUZ KÜRESEL ETKİLEŞİM ALANI -->
+    <div style="max-width: 600px; margin: 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
+        
+        <!-- Akıllı Beğen ve Paylaş Butonları -->
+        <div style="display: flex; gap: 20px; justify-content: center;">
+            <button id="likeBtn" style="background: transparent; border: 1px solid #d4af37; color: #1a1a1a; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s;">
+    			❤️ Beğen <span id="likeCount" style="display: none;">0</span>
+			</button>
+            <button id="shareBtn" style="background: #1a1a1a; border: 1px solid #d4af37; color: #d4af37; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: 600; display: flex; align-items: center; gap: 8px; transition: 0.3s;">
+                📤 Paylaş
+            </button>
+        </div>
+    </div> <!-- DİKKAT: Etkileşim (Beğeni/Paylaş) kutusu burada kapandı -->
+
+    <!-- KÜRESEL GERÇEK YORUM ALANI (CUSDIS) - GRİ ÇUBUKSUZ VE TÜRKÇE -->
+    <div style="max-width: 600px; margin: 0 auto 40px auto; padding: 20px; border-top: 1px dashed #d4af37; text-align: left;">
+        <h3 style="font-size: 16px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; color: #1a1a1a; font-family: 'Georgia', serif;">Yorumlar</h3>
+        
+        <!-- Yorum sistemi eklentisi -->
+        <div id="cusdis_thread"
+          data-host="https://cusdis.com"
+          data-app-id="371ccd11-50e8-4a06-ab08-0177eef0d2b4"
+          data-page-id="bir-tutam-miras-ve-goksu"
+          data-page-url="https://hamza-pak.github.io/kisisel-websitesi/siir-dosyalari/bir-tutam-miras-ve-goksu.html"
+          data-page-title="Bir Tutam Mîras ve Göksu"
+          data-lang="tr">
+        </div>
+        
+        <!-- Yorum Formunu Türkçeleştirme Scripti -->
+        <script>
+            window.CUSDIS_LOCALE = {
+                "powered_by": "Yorum Sistemi: Cusdis",
+                "post_comment": "Yorumu Yayınla",
+                "reply_placeholder": "Düşüncelerinizi Buraya Yazın...",
+                "nickname": "Takma İsim (Rumuz)",
+                "email": "E-Posta (İsteğe Bağlı)",
+                "sending": "Gönderiliyor...",
+                "loading": "Yorumlar yükleniyor...",
+                "comment_has_been_sent": "Yorumunuz gönderildi, onay bekliyor...",
+                "content_is_required": "Lütfen Boşlukları Doldurunuz!"
+            };
+        </script>
+        <script async defer src="../ek-dosyalar/cusdis.js"></script>
+    </div> <!-- DİKKAT: Yorum alanı kutusu da burada kapandı -->
+
+    <!-- BEĞENİ VE PAYLAŞ BUTONLARININ SİSTEM KODLARI -->
+    <script>
+        // Listeyle ortak hafıza kartını konuşması için sabit kimlik atandı
+        const pId = "/siir-dosyalari/bir-tutam-miras-ve-goksu.html"; 
+        
+        let lks = parseInt(localStorage.getItem('likes_' + pId)) || 0;
+        let lkd = localStorage.getItem('isLiked_' + pId) === 'true';
+        document.getElementById('likeCount').innerText = lks;
+        if (lkd) document.getElementById('likeBtn').style.background = '#d4af37';
+
+        document.getElementById('likeBtn').addEventListener('click', () => {
+            if (!lkd) { lks++; lkd = true; localStorage.setItem('isLiked_' + pId, 'true'); document.getElementById('likeBtn').style.background = '#d4af37'; } 
+            else { lks--; lkd = false; localStorage.removeItem('isLiked_' + pId); document.getElementById('likeBtn').style.background = 'transparent'; }
+            localStorage.setItem('likes_' + pId, lks);
+            document.getElementById('likeCount').innerText = lks;
+        });
+
+        document.getElementById('shareBtn').addEventListener('click', async () => {
+            if (navigator.share) { try { await navigator.share({ title: document.title, url: window.location.href }); } catch (err) {} } 
+            else { navigator.clipboard.writeText(window.location.href); alert('Link kopyalandı!'); }
+        });
+    </script>
+
+    <!-- ANA DİZİNE BAĞLI TAM GENİŞLİKTEKİ SİYAH FOOTER -->
+    <footer>
+        <p>&copy; 2026 - Tüm Hakları Saklıdır.</p>
+    </footer>
+
+</body>
+</html>
