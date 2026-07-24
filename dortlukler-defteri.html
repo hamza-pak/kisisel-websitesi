@@ -7,20 +7,20 @@
     <style>
         /* Renk Paleti: Kirli Beyaz (#f4f1ea), Siyah (#1a1a1a), Altın Sarısı (#d4af37) */
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-        body, html { height: 100%; background-color: #f4f1ea; color: #1a1a1a; overflow: hidden; }
+        body { background-color: #f4f1ea; color: #1a1a1a; line-height: 1.8; overflow: hidden; }
         
-        /* Üst Menü / Header */
-        header { background: #1a1a1a; color: #f4f1ea; padding: 25px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
-        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 38px; color: #d4af37; margin-bottom: 5px; font-weight: normal; }
+        /* Biraz Muhabbet sayfanızdan birebir kopyalanan jilet gibi eşitlenmiş Header */
+        header { background: #1a1a1a; color: #f4f1ea; padding: 35px 20px; text-align: center; border-bottom: 3px solid #d4af37; }
+        header h1 { font-family: 'Georgia', 'Garamond', 'Palatino', serif; font-style: italic; font-size: 55px; color: #d4af37; margin-bottom: 5px; font-weight: normal; line-height: 1.1; letter-spacing: 2px; }
         
-        nav { margin-top: 10px; text-align: center; width: 100%; display: block; }
+        nav { margin-top: 15px; }
         nav a { color: #f4f1ea; text-decoration: none; margin: 0 15px; font-weight: 600; padding: 5px 15px; border-radius: 4px; transition: 0.3s; font-size: 14px; letter-spacing: 1px; display: inline-block; }
         nav a:hover, nav a.active { color: #1a1a1a; background: #d4af37; }
 
-        /* Heyzine Defter Konteyner Alanı */
+        /* Heyzine Defter İçin Özel Ekran Kaplama Alanı */
         .flipbook-container {
             width: 100%;
-            height: calc(100vh - 120px); /* Ekran yüksekliğinden normal header'ı düşer */
+            height: calc(100vh - 165px); /* Genişleyen yeni header yüksekliğine göre alan milimetrik yeniden hesaplandı */
             background: #f4f1ea;
         }
         iframe {
@@ -30,32 +30,26 @@
             display: block;
         }
 
-        /* ==========================================================================
-           TELEFONDA KELİME BÖLÜNMESİNİ VE KAYMAYI ÖNLEYEN MOBİL AYARLAR
-           ========================================================================== */
+        /* Telefona geçildiğinde kelimelerin bölünmesini engelleyen akıllı mobil kurallarınız */
         @media (max-width: 768px) {
-            header { padding: 20px 10px; }
-            header h1 { font-size: 32px; }
+            header h1 { font-size: 42px; }
             
-            /* Telefon ekranında diğer 4 butonu pürüzsüzce yan yana dizer, yazıyı küçültür */
             nav a { 
                 margin: 5px 6px; 
                 padding: 4px 8px; 
                 font-size: 13px; 
             }
             
-            /* "Dörtlükler Defteri" butonunu tek parça halinde bağımsız alt satıra indiren kesin çözüm */
             nav a[href="defter.html"] {
                 display: block; 
                 width: max-content; 
                 margin: 8px auto 0 auto; 
-                background: #d4af37; /* Telefonda hangi sayfada olduğunu belli etmek için altın sarısı taban */
+                background: #d4af37; 
                 color: #1a1a1a;
             }
 
-            /* Defterin telefondaki dikey yüksekliğini menüye göre yeniden dengeler */
             .flipbook-container {
-                height: calc(100vh - 200px); 
+                height: calc(100vh - 240px); 
             }
         }
     </style>
@@ -69,14 +63,13 @@
             <a href="sozsel-sanatlar.html">Sözsel Sanatlar</a>
             <a href="gorsel-sanatlar.html">Görsel Sanatlar</a>
             <a href="biraz-muhabbet.html">Biraz Muhabbet</a>
-            <!-- Kendi sayfasında olduğu için aktif rengini alacak -->
+            <!-- Bu sayfa aktif olduğu için rengi otomatik olarak altın sarısı kalacaktır -->
             <a href="defter.html" class="active">Dörtlükler Defteri</a>
         </nav>
     </header>
 
-    <!-- HEYZINE DEFTERİNİZİN REKLAMSIZ TAM EKRAN ÇALIŞTIĞI ALAN -->
+    <!-- HEYZINE DEFTERİNİZİN BULUT ADRESİ -->
     <div class="flipbook-container">
-        <!-- ⚠️ Kendi Heyzine linkiniz burada aynen durmaktadır, değiştirmenize gerek yoktur -->
         <iframe src="https://heyzine.com/flip-book/53c8958a80.html" allowfullscreen allow="clipboard-write"></iframe>
     </div>
 
