@@ -1,0 +1,9 @@
+- index'in header'ı her sayfaya aktarılacak
+- yorumlar silinecek
+- dörtlükler defteri diğer sayfalara eklenecek
+- dörtlükler defteri düzenlenecek
+- sözsel sanatlara kategoriler eklenecek
+- görsel sanatların dizilimi yan yana olacak şekilde değiştirilecek
+- instagram bağlantısı düzeltilecek
+- kar tanem şiiri eklenecek
+- şiirler kategorilere göre paylaştırılacak
